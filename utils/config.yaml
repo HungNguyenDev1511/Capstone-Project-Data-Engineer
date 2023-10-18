@@ -1,0 +1,10 @@
+fake_data:
+  folder_path: /home/hungnguyen/lake-house-with-minio/data/taxi_combined
+  num_files: 12
+
+datalake:
+  endpoint: localhost:9000
+  bucket_name: nyc-taxi
+  folder_name: taxi_combined
+  access_key: minio_access_key
+  secret_key: minio_secret_key

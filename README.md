@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS lakehouse.nyc_taxi.taxi (
   congestion_surcharge DECIMAL, 
   airport_fee DECIMAL
 ) WITH (
-  location = 's3://nyc-taxi/'
+  location = 's3://nyc-taxi/nyc-taxi/taxi_combined/part0'
 );
 ```
 

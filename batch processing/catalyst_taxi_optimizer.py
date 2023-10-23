@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import avg
-
+import pandas as pd 
 
 def main():
     # The entrypoint to access all functions of Spark
@@ -11,19 +11,17 @@ def main():
     )
 
     # Create a DataFrame with user records
-    data = [(1, "Alice", 28), (2, "Bob", 25), (3, "Charlie", 32), (4, "David", 22)]
-    columns = ["user_id", "name", "age"]
-    df = spark.createDataFrame(data, columns)
+    df = pd.read_parquet("/home/hungnguyen/Caption-Project/data/taxi_combined/part0/0-ec436d91-69d4-42db-b8d0-8ce835ba225b-0.parquet")
+    df = spark.createDataFrame(pd)
 
     # Define the filter condition to select age
-    # greater than 25. This operation corresponds to the SQL
-    # SELECT * FROM df WHERE age > 25.
-    filter_condition = df["age"] > 25
+    # SELECT * FROM df WHERE trip_distance > 15.2.
+    filter_condition = df["trip_distance"] > 15.2
 
     # Apply the filter, aggregate the age column and
     # calculate the average.
     filtered_df = df.filter(filter_condition)
-    average_age = filtered_df.agg(avg("age")).collect()[0][0]
+    average_trip_distance = filtered_df.agg(avg("trip_distance")).collect()[0][0]
 
     """
     The recognizer can recognize that we first filter the data,
@@ -34,7 +32,7 @@ def main():
 
     # Show the result
     filtered_df.show()
-    print("Average Age:", average_age)
+    print("Average trip_distance:", average_trip_distance)
 
 
 if __name__ == "__main__":

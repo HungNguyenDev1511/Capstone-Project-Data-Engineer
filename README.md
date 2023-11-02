@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS lakehouse.nyc_taxi.taxi (
   VendorID VARCHAR(50),
   tpep_pickup_datetime VARCHAR (50),
   tpep_dropoff_datetime VARCHAR (50),
-  passenger_count INT,
+  passenger_count DECIMAL,
   trip_distance DECIMAL,
   RatecodeID DECIMAL, 
   store_and_fwd_flag VARCHAR(50), 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS lakehouse.nyc_taxi.taxi (
   improvement_surcharge VARCHAR(50),
   total_amount DECIMAL,
   congestion_surcharge DECIMAL, 
-  airport_fee DECIMAL
+  Airport_fee DECIMAL
 ) WITH (
   location = 's3://nyc-taxi/nyc-taxi/taxi_combined/part0'
 );

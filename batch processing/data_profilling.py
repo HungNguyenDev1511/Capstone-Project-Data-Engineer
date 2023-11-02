@@ -26,7 +26,7 @@ def main():
         spark.read.format("jdbc")
         .option("driver", "org.postgresql.Driver")
         .option("url", f"jdbc:postgresql:{os.getenv('POSTGRES_DB')}")
-        .option("dbtable", "public.devices")
+        .option("dbtable", "public.taxis")
         .option("user", os.getenv("POSTGRES_USER"))
         .option("password", os.getenv("POSTGRES_PASSWORD"))
         .load()

@@ -83,25 +83,26 @@ services:
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
-    container_name: zookeeper
+    # hostname: zookeeper
+    container_name: flink-zookeeper
     ports:
-      - "2181:2181" # host_port:container_port
+      - "2181:2181"
     healthcheck:
       test: echo srvr | nc zookeeper 2181 || exit 1
       start_period: 10s
       retries: 20
       interval: 10s
     environment:
-      ZOOKEEPER_CLIENT_PORT: 2181 # Client will connect to this port to communicate with zookeeper
-      ZOOKEEPER_TICK_TIME: 2000 # Basic time unit for timing (2000 ms)
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
 
-  # Kafka broker, each broker can be considered as a node
+  # Kafka broker
   broker:
     image: confluentinc/cp-server:7.5.0
-    container_name: broker
+    # hostname: broker
+    container_name: flink-broker
     depends_on:
-      zookeeper:
-        condition: service_healthy
+      - zookeeper
     ports:
       - "9092:9092"
       - "9101:9101"
@@ -112,18 +113,17 @@ services:
       timeout: 10s
       retries: 10
     environment:
-      # ID of the broker in a cluster
-      KAFKA_BROKER_ID: 1 
+      KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schema-registry:8081
-  
+
+  # For managing Avro schemas
   schema-registry:
     image: confluentinc/cp-schema-registry:7.5.0
     # hostname: schema-registry
-    container_name: schema-registry
+    container_name: flink-schema-registry
     depends_on:
       - broker
     ports:
@@ -137,7 +137,8 @@ services:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29092'
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
-    
+
+  # For connecting to offline store
   connect:
     image: confluentinc/cp-kafka-connect:7.5.0
     # hostname: connect
@@ -169,8 +170,9 @@ services:
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       CONNECT_PLUGIN_PATH: '/usr/share/java,/etc/kafka-connect/jars'
     volumes:
-      - $PWD/data_ingestion/kafka_connect/jars/:/etc/kafka-connect/jars
+      - /home/hungnguyen/Caption-Project/flink/data_ingestion/kafka_connect/jars:/etc/kafka-connect/jars
 
+  # Confluent control center to manage Kafka
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.5.0
     # hostname: control-center
@@ -199,6 +201,39 @@ services:
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       # PORT: 9021
 
+  # Offline store
+  timescaledb:
+    image: timescale/timescaledb:latest-pg13
+    command: postgres -c shared_preload_libraries=timescaledb
+    container_name: flink-timescaledb
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ['CMD', 'psql', '-U', 'k6', '-c', 'SELECT 1']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - PGDATA=/var/lib/postgresql/data/timescaledb
+      - POSTGRES_DB=k6
+      - POSTGRES_USER=k6
+      - POSTGRES_PASSWORD=k6
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # Simulation of sending messages to Kafka topics
+  kafka_producer:
+    build:
+      context: .
+      dockerfile: ./flink/data_ingestion/kafka_producer/Dockerfile
+    depends_on:
+      broker:
+        condition: service_healthy
+      timescaledb:
+        condition: service_healthy
+    container_name: flink-kafka-producer
+
 
 volumes:
   minio_storage:
+  pgdata:

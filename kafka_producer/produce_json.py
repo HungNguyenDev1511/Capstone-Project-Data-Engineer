@@ -33,7 +33,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 # Define some constants
-NUM_DEVICES = 1
+NUM_TAXI = 1
 
 
 def create_topic(admin, topic_name):
@@ -67,22 +67,43 @@ def create_streams(servers, schemas_path):
     while True:
         record = {}
         # Make event one more year recent to simulate fresher data
-        record["created"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        record["device_id"] = np.random.randint(low=0, high=NUM_DEVICES)
+        record["taxi_id"] = np.random.randint(low=0, high=NUM_TAXI)
+        record["VendorID"] = np.random.randint(low=1, high=2)
+        # Make event one more year recent to simulate fresher data
+        record["tpep_pickup_datetime"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        record["tpep_dropoff_datetime"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        record["passenger_count"] = np.random.randint(low=0, high=5)
+        record["trip_distance"] = np.random.uniform (low = 0.0, high = 30.0)
+        record["RatecodeID"] = np.random.randint(low=0, high=2)
+        record["store_and_fwd_flag"] =np.random.choice(["Y","N"])
+        record["PULocationID"] = np.random.randint(low=0, high=300)
+        record["DOLocationID"] = np.random.randint(low=0, high=300)
+        record["payment_type"] = np.random.randint(low=0, high=70.0)
+        record["fare_amount"] = np.random.uniform (low=0, high=70.0)
+        record["extra"] = np.random.choice([0 , 2.5])
+        record["mta_tax"] = np.random.choice (0, 0.5)
+        record["tip_amount"] = np.random.uniform(low=0, high=20.00)
+        record["tolls_amount"] = np.random.choice([0, 6.55])
+        record["improvement_surcharge"] = np.random.uniform(-0.3, 0.3)
+        record["total_amount"] = np.random.randint(low=0.00, high=30.00)
+        record["congestion_surcharge"] = np.random.choice([0 , 2.5])
+        record["Airport_fee"] = np.random.choice([0 , 2.5])
 
         # Read columns from schema
-        schema_path = f"{schemas_path}/schema_{record['device_id']}.avsc"
+        schema_path = f"{schemas_path}/schema_{record['taxi_id']}.avsc"
         with open(schema_path, "r") as f:
             parsed_schema = json.loads(f.read())
 
         for field in parsed_schema["fields"]:
-            if field["name"] not in ["created", "device_id"]:
+            if field["name"] not in ["taxi_id", "VendorID","tpep_pickup_datetime", "tpep_dropoff_datetime", "passenger_count", "trip_distance","RatecodeID"
+,"store_and_fwd_flag", "PULocationID", "DOLocationID", "payment_type", "fare_amount", "extra", "mta_tax", "tip_amount", "tolls_amount", "improvement_surcharge","total_amount"
+, "congestion_surcharge", "Airport_fee"]:
                 record[field["name"]] = np.random.rand()
 
-        # Get topic name for this device
-        topic_name = f'device_{record["device_id"]}'
+        # Get topic name for this taxo
+        topic_name = f'taxi_{record["taxi_id"]}'
 
-        # Create a new topic for this device id if not exists
+        # Create a new topic for this taxi id if not exists
         create_topic(admin, topic_name=topic_name)
 
         # Send messages to this topic
@@ -110,11 +131,11 @@ if __name__ == "__main__":
 
     # Tear down all previous streams
     print("Tearing down all existing topics!")
-    for device_id in range(NUM_DEVICES):
+    for taxi_id in range(NUM_TAXI):
         try:
-            teardown_stream(f"device_{device_id}", [servers])
+            teardown_stream(f"taxi_{taxi_id}", [servers])
         except Exception as e:
-            print(f"Topic device_{device_id} does not exist. Skipping...!")
+            print(f"Topic taxi_{taxi_id} does not exist. Skipping...!")
 
     if mode == "setup":
         schemas_path = parsed_args["schemas_path"]

@@ -9,13 +9,13 @@ DATA_DIR = "/training/data/regression"
 if __name__ == "__main__":
     print("Loading data...")
     # load or create your dataset
-    df_train = pd.read_csv(
-        os.path.join(DATA_DIR, "regression.train"),
+    df_train = pd.read_parquet(
+        os.path.join(DATA_DIR, "yellow_tripdata_2022-08.parquet"),
         header=None,
         sep="\t",
     )
-    df_test = pd.read_csv(
-        os.path.join(DATA_DIR, "regression.test"),
+    df_test = pd.read_parquet(
+        os.path.join(DATA_DIR, "yellow_tripdata_2022-09.parquet"),
         header=None,
         sep="\t",
     )

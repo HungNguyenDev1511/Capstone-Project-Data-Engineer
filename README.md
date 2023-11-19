@@ -28,10 +28,10 @@ When you are already inside the `trino` container, typing `trino` to in an inter
 After that, run the following command to register a new schema for our data:
 
 ```sql
-CREATE SCHEMA IF NOT EXISTS lakehouse.nyc_taxi
-WITH (location = 's3://nyc-taxi/');
+CREATE SCHEMA IF NOT EXISTS lakehouse.taxi
+WITH (location = 's3://taxi/');
 
-CREATE TABLE IF NOT EXISTS lakehouse.nyc_taxi.taxi (
+CREATE TABLE IF NOT EXISTS lakehouse.taxi.taxi (
   VendorID VARCHAR(50),
   tpep_pickup_datetime VARCHAR (50),
   tpep_dropoff_datetime VARCHAR (50),
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS lakehouse.nyc_taxi.taxi (
   congestion_surcharge DECIMAL, 
   Airport_fee DECIMAL
 ) WITH (
-  location = 's3://nyc-taxi/nyc-taxi/taxi_combined/part0'
+  location = 's3://taxi/part0'
 );
 ```
 

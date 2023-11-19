@@ -10,7 +10,6 @@ def main():
     # Create a client with the MinIO server playground, its access key
     # and secret key.
 
-
     client = Minio(
         endpoint= "localhost:9000",
         access_key= "minio_access_key",
@@ -19,15 +18,15 @@ def main():
     )
 
     # Create bucket if not exist.
-    found = client.bucket_exists(bucket_name= "nyc-taxi")
+    found = client.bucket_exists(bucket_name= "taxi")
     if not found:
-        client.make_bucket(bucket_name= "nyc-taxi")
+        client.make_bucket(bucket_name= "taxi")
     else:
-        print(f'Bucket nyc-taxi already exists, skip creating!')
+        print(f'Bucket taxi already exists, skip creating!')
 
     # put object.
-    local_folder = '/home/hungnguyen/lake-house-with-minio/data/column' 
-    minio_bucket = 'nyc-taxi' 
+    local_folder = '/home/hungnguyen/Caption-Project/data/taxi-data' 
+    minio_bucket = 'taxi' 
 
     for root, _, files in os.walk(local_folder):
         for file in files:

@@ -80,14 +80,118 @@ def create_streams(servers, schemas_path):
         record["DOLocationID"] = np.random.randint(low=0, high=300)
         record["payment_type"] = np.random.randint(low=0, high=70.0)
         record["fare_amount"] = np.random.uniform (low=0, high=70.0)
-        record["extra"] = np.random.choice([0 , 2.5])
-        record["mta_tax"] = np.random.choice (0, 0.5)
+        record["extra"] = np.random.uniform([0 , 2.5])
+        record["mta_tax"] = np.random.uniform ([0, 0.5])
         record["tip_amount"] = np.random.uniform(low=0, high=20.00)
-        record["tolls_amount"] = np.random.choice([0, 6.55])
+        record["tolls_amount"] = np.random.uniform([0, 6.55])
         record["improvement_surcharge"] = np.random.uniform(-0.3, 0.3)
         record["total_amount"] = np.random.randint(low=0.00, high=30.00)
-        record["congestion_surcharge"] = np.random.choice([0 , 2.5])
-        record["Airport_fee"] = np.random.choice([0 , 2.5])
+        record["congestion_surcharge"] = np.random.uniform([0 , 2.5])
+        record["airport_fee"] = np.random.uniform([0 , 2.5])
+
+        schema = {
+            "schema": {
+            "type": "struct",
+                "fields": [
+                {
+                    "type": "int64",
+                    "optional": false,
+                    "field": "VendorID"
+                },
+                {
+                    "type": "datetime",
+                    "optional": false,
+                    "field": "tpep_pickup_datetime"
+                },
+                {
+                    "type": "datetime",
+                    "optional": false,
+                    "field": "tpep_dropoff_datetime"
+                },
+                {
+                    "type": "int64",
+                    "optional": false,
+                    "field": "passenger_count"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "trip_distance"
+                },
+                {
+                    "type": "int64",
+                    "optional": false,
+                    "field": "RatecodeID"
+                },
+                {
+                    "type": "string",
+                    "optional": false,
+                    "field": "store_and_fwd_flag"
+                },
+                {
+                    "type": "int64",
+                    "optional": false,
+                    "field": "PULocationID"
+                },
+                {
+                    "type": "int64",
+                    "optional": false,
+                    "field": "DOLocationID"
+                },
+                {
+                    "type": "int64",
+                    "optional": false,
+                    "field": "payment_type"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "fare_amount"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "extra"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "mta_tax"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "tip_amount"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "tolls_amount"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "improvement_surcharge"
+                },
+                {
+                    "type": "int64",
+                    "optional": false,
+                    "field": "total_amount"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "congestion_surcharge"
+                },
+                {
+                    "type": "double",
+                    "optional": false,
+                    "field": "airport_fee"
+                }
+                ]
+            }
+        }
+
 
         # Read columns from schema
         schema_path = f"{schemas_path}/schema_{record['taxi_id']}.avsc"

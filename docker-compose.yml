@@ -164,11 +164,14 @@ services:
       CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
       CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
-      CONNECT_KEY_CONVERTER: io.confluent.connect.avro.AvroConverter
-      CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: true
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: true
       CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       CONNECT_PLUGIN_PATH: '/usr/share/java,/etc/kafka-connect/jars'
+
     volumes:
       - /home/hungnguyen/Caption-Project/flink/data_ingestion/kafka_connect/jars:/etc/kafka-connect/jars
 
@@ -225,7 +228,7 @@ services:
   kafka_producer:
     build:
       context: .
-      dockerfile: ./flink/data_ingestion/kafka_producer/Dockerfile
+      dockerfile: /home/hungnguyen/Caption-Project/kafka_producer/Dockerfile
     depends_on:
       broker:
         condition: service_healthy

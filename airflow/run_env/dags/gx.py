@@ -13,13 +13,31 @@ with DAG(dag_id="gx", start_date=datetime(2023, 7, 1), schedule=None) as dag:
         task_id="create_table_pg",
         postgres_conn_id=POSTGRES_CONN_ID,
         sql="""
-            CREATE TABLE strawberries (
-                id VARCHAR(10) PRIMARY KEY,
-                name VARCHAR(100),
-                amount INT
-            );
+            CREATE TABLE IF NOT EXISTS taxi (
+                VendorID VARCHAR(50),
+                tpep_pickup_datetime VARCHAR (50),
+                tpep_dropoff_datetime VARCHAR (50),
+                passenger_count DECIMAL,
+                trip_distance DECIMAL,
+                RatecodeID DECIMAL, 
+                store_and_fwd_flag VARCHAR(50), 
+                PULocationID VARCHAR(50),
+                DOLocationID VARCHAR(50), 
+                payment_type VARCHAR(50), 
+                fare_amount DECIMAL, 
+                extra DECIMAL, 
+                mta_tax DECIMAL, 
+                tip_amount DECIMAL, 
+                tolls_amount DECIMAL, 
+                improvement_surcharge VARCHAR(50),
+                total_amount DECIMAL,
+                congestion_surcharge DECIMAL, 
+                Airport_fee DECIMAL
+                );
 
-            INSERT INTO strawberries (id, name, amount)
+            INSERT INTO taxi (VendorID, tpep_pickup_datetime, tpep_dropoff_datetime, passenger_count, trip_distance, RatecodeID, store_and_fwd_flag,
+            PULocationID, DOLocationID, payment_type, fare_amount, extra, mta_tax, tip_amount, tolls_amount, improvement_surcharge, total_amount, congestion_surcharge,
+            Airport_fee)
             VALUES ('001', 'Strawberry Order 1', 10),
                 ('002', 'Strawberry Order 2', 5),
                 ('003', 'Strawberry Order 3', 8),
@@ -42,7 +60,7 @@ with DAG(dag_id="gx", start_date=datetime(2023, 7, 1), schedule=None) as dag:
         task_id="drop_table_pg",
         postgres_conn_id=POSTGRES_CONN_ID,
         sql="""
-            DROP TABLE strawberries;
+            DROP TABLE taxi;
             """,
     )
 

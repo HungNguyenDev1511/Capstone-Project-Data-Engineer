@@ -3,13 +3,12 @@ from helpers import load_cfg
 from glob import glob
 import os
 
-CFG_FILE = '/home/hungnguyen/lake-house-with-minio/utils/config.yaml'
+CFG_FILE = '/home/hungnguyen/Caption-Project/utils/config.yaml'
 
 def main():
     cfg = load_cfg(CFG_FILE)
     datalake_cfg = cfg["datalake"]
-    fake_data_cfg = cfg["fake_data"]
-
+    print(cfg)
     # Create a client with the MinIO server playground, its access key
     # and secret key.
     client = Minio(
@@ -27,14 +26,23 @@ def main():
         print(f'Bucket {datalake_cfg["bucket_name"]} already exists, skip creating!')
 
     # Upload files.
-    all_fps = glob(
+    all_fps_parquet = glob(
         os.path.join(
-            fake_data_cfg["folder_path"],
+            '/home/hungnguyen/Caption-Project/data/taxi-data',
             "*.parquet"
         )
     )
 
-    for fp in all_fps:
+    all_fps_json = glob(
+        os.path.join(
+            '/home/hungnguyen/Caption-Project/data/taxi-data',
+            '**',
+            "*.json"
+        ),
+        recursive = True
+    )
+
+    for fp in all_fps_parquet:
         print(f"Uploading {fp}")
         client.fput_object(
             bucket_name=datalake_cfg["bucket_name"],
@@ -44,6 +52,17 @@ def main():
             ),
             file_path=fp
         )
+
+    for fp in all_fps_json:
+        print(f"Uploading {fp}")
+        client.fput_object(
+            bucket_name=datalake_cfg["bucket_name"],
+            object_name=os.path.join(
+                datalake_cfg["folder_name"],
+                os.path.basename(fp)
+            ),
+            file_path=fp
+        ) 
 
 if __name__ == '__main__':
     main()

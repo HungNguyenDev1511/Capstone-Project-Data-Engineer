@@ -19,7 +19,7 @@ if __name__ == '__main__':
     # ts = pd.date_range(start=start_ts, end=end_ts, freq='H')
     # df = pd.DataFrame(ts, columns=['event_timestamp'])
     
-    df = pd.read_parquet("/home/hungnguyen/lake-house-with-minio/nyc1.parquet")
+    df = pd.read_parquet("/home/hungnguyen/Caption-Project/utils/output.parquet")
 
 
     # Random floats in the half-open interval [0.0, 1.0)

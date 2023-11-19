@@ -12,7 +12,7 @@ with DAG(dag_id="docker", start_date=datetime(2023, 7, 1), schedule=None) as dag
     # from other components
     train_task = DockerOperator(
         task_id="train_task",
-        image="fullstackdatascience/airflow-lgb-stage:0.0.1",
+        image="6666688889/airflow-lgb-stage:0.0.1",
         container_name="airflow-lgb-stage",
         api_version="auto",
         auto_remove=True,

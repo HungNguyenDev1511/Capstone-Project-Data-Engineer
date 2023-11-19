@@ -40,7 +40,7 @@ def main(args):
                 {"name": "improvement_surcharge", "type": "string"},
                 {"name": "total_amount", "type": "DECIMAL"},
                 {"name": "congestion_surcharge", "type": "DECIMAL"},
-                {"name": "Airport_fee", "type": "DECIMAL"},
+                {"name": "airport_fee", "type": "DECIMAL"},
             ],
             "name": "Taxi",
             "namespace": "example.avro",

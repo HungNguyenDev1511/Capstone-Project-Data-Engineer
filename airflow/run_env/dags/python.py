@@ -34,13 +34,13 @@ with DAG(dag_id="python", start_date=datetime(2023, 7, 1), schedule=None) as dag
 
         print("Loading data...")
         # load or create your dataset
-        df_train = pd.read_csv(
-            os.path.join(DATA_DIR, "regression.train"),
+        df_train = pd.read_parquet(
+            os.path.join(DATA_DIR, "regression.train.yellow_tripdata_2022-08.parquet"),
             header=None,
             sep="\t",
         )
-        df_test = pd.read_csv(
-            os.path.join(DATA_DIR, "regression.test"),
+        df_test = pd.read_parquet(
+            os.path.join(DATA_DIR, "regression.test.yellow_tripdata_2022-09.parquet"),
             header=None,
             sep="\t",
         )

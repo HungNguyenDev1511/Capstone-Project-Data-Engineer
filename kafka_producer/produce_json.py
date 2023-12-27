@@ -3,6 +3,7 @@ import io
 import json
 from datetime import datetime
 from time import sleep
+import random
 
 import numpy as np
 from bson import json_util
@@ -65,147 +66,145 @@ def create_streams(servers, schemas_path):
             pass
 
     while True:
-        record = {}
-        # Make event one more year recent to simulate fresher data
-        record["taxi_id"] = np.random.randint(low=0, high=NUM_TAXI)
-        record["VendorID"] = np.random.randint(low=1, high=2)
-        # Make event one more year recent to simulate fresher data
-        record["tpep_pickup_datetime"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        record["tpep_dropoff_datetime"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        record["passenger_count"] = np.random.randint(low=0, high=5)
-        record["trip_distance"] = np.random.uniform (low = 0.0, high = 30.0)
-        record["RatecodeID"] = np.random.randint(low=0, high=2)
-        record["store_and_fwd_flag"] =np.random.choice(["Y","N"])
-        record["PULocationID"] = np.random.randint(low=0, high=300)
-        record["DOLocationID"] = np.random.randint(low=0, high=300)
-        record["payment_type"] = np.random.randint(low=0, high=70.0)
-        record["fare_amount"] = np.random.uniform (low=0, high=70.0)
-        record["extra"] = np.random.uniform([0 , 2.5])
-        record["mta_tax"] = np.random.uniform ([0, 0.5])
-        record["tip_amount"] = np.random.uniform(low=0, high=20.00)
-        record["tolls_amount"] = np.random.uniform([0, 6.55])
-        record["improvement_surcharge"] = np.random.uniform(-0.3, 0.3)
-        record["total_amount"] = np.random.randint(low=0.00, high=30.00)
-        record["congestion_surcharge"] = np.random.uniform([0 , 2.5])
-        record["airport_fee"] = np.random.uniform([0 , 2.5])
-
-        schema = {
+        record = {
             "schema": {
             "type": "struct",
                 "fields": [
                 {
                     "type": "int64",
-                    "optional": false,
+                    "optional": False,
                     "field": "VendorID"
                 },
                 {
-                    "type": "datetime",
-                    "optional": false,
+                    "type": "string",
+                    "optional": False,
                     "field": "tpep_pickup_datetime"
                 },
                 {
-                    "type": "datetime",
-                    "optional": false,
+                    "type": "string",
+                    "optional": False,
                     "field": "tpep_dropoff_datetime"
                 },
                 {
                     "type": "int64",
-                    "optional": false,
+                    "optional": False,
                     "field": "passenger_count"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "trip_distance"
                 },
                 {
                     "type": "int64",
-                    "optional": false,
+                    "optional": False,
                     "field": "RatecodeID"
                 },
                 {
                     "type": "string",
-                    "optional": false,
+                    "optional": False,
                     "field": "store_and_fwd_flag"
                 },
                 {
                     "type": "int64",
-                    "optional": false,
+                    "optional": False,
                     "field": "PULocationID"
                 },
                 {
                     "type": "int64",
-                    "optional": false,
+                    "optional": False,
                     "field": "DOLocationID"
                 },
                 {
                     "type": "int64",
-                    "optional": false,
+                    "optional": False,
                     "field": "payment_type"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "fare_amount"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "extra"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "mta_tax"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "tip_amount"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "tolls_amount"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "improvement_surcharge"
                 },
                 {
                     "type": "int64",
-                    "optional": false,
+                    "optional": False,
                     "field": "total_amount"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "congestion_surcharge"
                 },
                 {
                     "type": "double",
-                    "optional": false,
+                    "optional": False,
                     "field": "airport_fee"
                 }
                 ]
             }
         }
+        record["payload"] = {}
 
+        record["payload"]["taxi_id"] = random.randint(0, NUM_TAXI)
+        record["payload"]["VendorID"] = random.randint(1, 2)
+        # Make event one more year recent to simulate fresher data
+        record["payload"]["tpep_pickup_datetime"] = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        record["payload"]["tpep_dropoff_datetime"] = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        record["payload"]["passenger_count"] = random.randint(  0, 5)
+        record["payload"]["trip_distance"] = random.uniform (0.0, 30.0)
+        record["payload"]["RatecodeID"] = random.randint(  0, 2)
+        record["payload"]["store_and_fwd_flag"] =random.choice(["Y","N"])
+        record["payload"]["PULocationID"] = random.randint( 0, 300)
+        record["payload"]["DOLocationID"] = random.randint( 0, 300)
+        record["payload"]["payment_type"] = random.randint( 0, 70.0)
+        record["payload"]["fare_amount"] = random.uniform ( 0, 70.0)
+        record["payload"]["extra"] = random.uniform(0 , 2.5)
+        record["payload"]["mta_tax"] = random.uniform (0, 0.5)
+        record["payload"]["tip_amount"] = random.uniform(  0, 20.00)
+        record["payload"]["tolls_amount"] = random.uniform(0, 6.55)
+        record["payload"]["improvement_surcharge"] = random.uniform(-0.3, 0.3)
+        record["payload"]["total_amount"] = random.randint(  0.00, 30.00)
+        record["payload"]["congestion_surcharge"] = random.uniform(0 , 2.5)
+        record["payload"]["airport_fee"] = random.uniform(0 , 2.5)
 
         # Read columns from schema
-        schema_path = f"{schemas_path}/schema_{record['taxi_id']}.avsc"
-        with open(schema_path, "r") as f:
-            parsed_schema = json.loads(f.read())
+        # schema_path = f"{schemas_path}/schema_{record['taxi_id']}.avsc"
+        # with open(schema_path, "r") as f:
+        #     parsed_schema = json.loads(f.read())
 
-        for field in parsed_schema["fields"]:
-            if field["name"] not in ["taxi_id", "VendorID","tpep_pickup_datetime", "tpep_dropoff_datetime", "passenger_count", "trip_distance","RatecodeID"
-,"store_and_fwd_flag", "PULocationID", "DOLocationID", "payment_type", "fare_amount", "extra", "mta_tax", "tip_amount", "tolls_amount", "improvement_surcharge","total_amount"
-, "congestion_surcharge", "Airport_fee"]:
-                record[field["name"]] = np.random.rand()
+#         for field in parsed_schema["fields"]:
+#             if field["name"] not in ["taxi_id", "VendorID","tpep_pickup_datetime", "tpep_dropoff_datetime", "passenger_count", "trip_distance","RatecodeID"
+# ,"store_and_fwd_flag", "PULocationID", "DOLocationID", "payment_type", "fare_amount", "extra", "mta_tax", "tip_amount", "tolls_amount", "improvement_surcharge","total_amount"
+# , "congestion_surcharge", "Airport_fee"]:
+#                 record[field["taxi_id"]] = np.random.rand()
 
         # Get topic name for this taxo
-        topic_name = f'taxi_{record["taxi_id"]}'
+        topic_name = f'taxi_0'
 
         # Create a new topic for this taxi id if not exists
         create_topic(admin, topic_name=topic_name)

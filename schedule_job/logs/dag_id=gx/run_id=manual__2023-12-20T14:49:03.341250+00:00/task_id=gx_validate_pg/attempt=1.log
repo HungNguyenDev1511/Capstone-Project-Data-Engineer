@@ -1,0 +1,60 @@
+[2023-12-20T14:49:10.090+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gx.gx_validate_pg manual__2023-12-20T14:49:03.341250+00:00 [queued]>
+[2023-12-20T14:49:10.119+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gx.gx_validate_pg manual__2023-12-20T14:49:03.341250+00:00 [queued]>
+[2023-12-20T14:49:10.119+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-12-20T14:49:10.182+0000] {taskinstance.py:1380} INFO - Executing <Task(GreatExpectationsOperator): gx_validate_pg> on 2023-12-20 14:49:03.341250+00:00
+[2023-12-20T14:49:10.205+0000] {standard_task_runner.py:57} INFO - Started process 2283 to run task
+[2023-12-20T14:49:10.230+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'gx', 'gx_validate_pg', 'manual__2023-12-20T14:49:03.341250+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/gx.py', '--cfg-path', '/tmp/tmptl7b_mzg']
+[2023-12-20T14:49:10.231+0000] {standard_task_runner.py:85} INFO - Job 14: Subtask gx_validate_pg
+[2023-12-20T14:49:10.554+0000] {task_command.py:415} INFO - Running <TaskInstance: gx.gx_validate_pg manual__2023-12-20T14:49:03.341250+00:00 [running]> on host d2178d55ea0c
+[2023-12-20T14:49:11.154+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='gx' AIRFLOW_CTX_TASK_ID='gx_validate_pg' AIRFLOW_CTX_EXECUTION_DATE='2023-12-20T14:49:03.341250+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-20T14:49:03.341250+00:00'
+[2023-12-20T14:49:11.155+0000] {great_expectations.py:570} INFO - Running validation with Great Expectations...
+[2023-12-20T14:49:11.158+0000] {great_expectations.py:572} INFO - Instantiating Data Context...
+[2023-12-20T14:49:11.264+0000] {base.py:73} INFO - Using connection ID 'postgres_default' for task execution.
+[2023-12-20T14:49:11.329+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/base_data_context.py:158: DeprecationWarning: DataContext and BaseDataContext are deprecated as of v0.17.10 and will be removed in v0.20. Please use gx.get_context instead.
+  warnings.warn(
+
+[2023-12-20T14:49:11.366+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/serializable_data_context.py:225: UserWarning: Warning. An existing `great_expectations.yml` was found here: /opt/***/include/gx.
+    - No action was taken.
+  warnings.warn(message)
+
+[2023-12-20T14:49:11.366+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/serializable_data_context.py:235: UserWarning: Warning. An existing `config_variables.yml` was found here: /opt/***/include/gx/uncommitted.
+    - No action was taken.
+  warnings.warn(message)
+
+[2023-12-20T14:49:11.377+0000] {file_data_context.py:222} INFO - FileDataContext loading fluent config
+[2023-12-20T14:49:11.382+0000] {config.py:185} INFO - Loading 'datasources' ->
+[]
+[2023-12-20T14:49:11.456+0000] {inline_store_backend.py:223} WARNING - Could not save project config to disk: [Errno 13] Permission denied: '/opt/***/include/great_expectations/great_expectations.yml'
+[2023-12-20T14:49:11.457+0000] {great_expectations.py:585} INFO - Creating Checkpoint...
+[2023-12-20T14:49:11.458+0000] {great_expectations.py:604} INFO - Running Checkpoint...
+[2023-12-20T14:49:11.468+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations_provider/operators/great_expectations.py", line 607, in execute
+    result = self.checkpoint.run(batch_request=self.batch_request)
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/core/usage_statistics/usage_statistics.py", line 260, in usage_statistics_wrapped_method
+    result = func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/checkpoint/checkpoint.py", line 315, in run
+    self._run_validation(
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/checkpoint/checkpoint.py", line 480, in _run_validation
+    validator: Validator = self._validator or self.data_context.get_validator(
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 2336, in get_validator
+    expectation_suite = self.get_expectation_suite(
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 3008, in get_expectation_suite
+    dict, self.expectations_store.get(key)
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/data_context/store/expectations_store.py", line 210, in get
+    return super().get(key)  # type: ignore[return-value]
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/data_context/store/store.py", line 210, in get
+    return self.deserialize(value)
+  File "/home/airflow/.local/lib/python3.8/site-packages/great_expectations/data_context/store/expectations_store.py", line 236, in deserialize
+    return self._expectationSuiteSchema.loads(value)
+  File "/home/airflow/.local/lib/python3.8/site-packages/marshmallow/schema.py", line 756, in loads
+    return self.load(data, many=many, partial=partial, unknown=unknown)
+  File "/home/airflow/.local/lib/python3.8/site-packages/marshmallow/schema.py", line 722, in load
+    return self._do_load(
+  File "/home/airflow/.local/lib/python3.8/site-packages/marshmallow/schema.py", line 909, in _do_load
+    raise exc
+marshmallow.exceptions.ValidationError: {'expectations': {0: {'args': ['Unknown field.']}}}
+[2023-12-20T14:49:11.485+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=gx, task_id=gx_validate_pg, execution_date=20231220T144903, start_date=20231220T144910, end_date=20231220T144911
+[2023-12-20T14:49:11.569+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 14 for task gx_validate_pg ({'expectations': {0: {'args': ['Unknown field.']}}}; 2283)
+[2023-12-20T14:49:11.623+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-20T14:49:11.718+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

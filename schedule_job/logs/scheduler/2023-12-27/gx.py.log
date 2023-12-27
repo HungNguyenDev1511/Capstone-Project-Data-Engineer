@@ -1,0 +1,45 @@
+[2023-12-27T12:26:06.835+0000] {processor.py:157} INFO - Started process (PID=34) to work on /opt/airflow/dags/gx.py
+[2023-12-27T12:26:06.838+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/gx.py for tasks to queue
+[2023-12-27T12:26:06.841+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:06.840+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/gx.py
+[2023-12-27T12:26:12.820+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:12.819+0000] {warnings.py:109} WARNING - /home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/options.py:103: UserWarning: You have an incompatible version of 'pyarrow' installed (11.0.0), please install a version that adheres to: 'pyarrow<10.1.0,>=10.0.1; extra == "pandas"'
+  warn_incompatible_dep(
+[2023-12-27T12:26:14.775+0000] {processor.py:839} INFO - DAG(s) dict_keys(['gx']) retrieved from /opt/airflow/dags/gx.py
+[2023-12-27T12:26:14.821+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:14.821+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-12-27T12:26:14.835+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:14.835+0000] {dag.py:3696} INFO - Setting next_dagrun for gx to None, run_after=None
+[2023-12-27T12:26:14.855+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/gx.py took 5.587 seconds
+[2023-12-27T12:26:45.497+0000] {processor.py:157} INFO - Started process (PID=51) to work on /opt/airflow/dags/gx.py
+[2023-12-27T12:26:45.510+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/gx.py for tasks to queue
+[2023-12-27T12:26:45.513+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:45.513+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/gx.py
+[2023-12-27T12:26:46.734+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:46.734+0000] {warnings.py:109} WARNING - /home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/options.py:103: UserWarning: You have an incompatible version of 'pyarrow' installed (11.0.0), please install a version that adheres to: 'pyarrow<10.1.0,>=10.0.1; extra == "pandas"'
+  warn_incompatible_dep(
+[2023-12-27T12:26:47.656+0000] {processor.py:839} INFO - DAG(s) dict_keys(['gx']) retrieved from /opt/airflow/dags/gx.py
+[2023-12-27T12:26:47.688+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:47.688+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-12-27T12:26:47.697+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:26:47.697+0000] {dag.py:3696} INFO - Setting next_dagrun for gx to None, run_after=None
+[2023-12-27T12:26:47.712+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/gx.py took 2.221 seconds
+[2023-12-27T12:27:18.387+0000] {processor.py:157} INFO - Started process (PID=68) to work on /opt/airflow/dags/gx.py
+[2023-12-27T12:27:18.453+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/gx.py for tasks to queue
+[2023-12-27T12:27:18.474+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:18.474+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/gx.py
+[2023-12-27T12:27:20.537+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:20.536+0000] {warnings.py:109} WARNING - /home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/options.py:103: UserWarning: You have an incompatible version of 'pyarrow' installed (11.0.0), please install a version that adheres to: 'pyarrow<10.1.0,>=10.0.1; extra == "pandas"'
+  warn_incompatible_dep(
+[2023-12-27T12:27:21.929+0000] {processor.py:839} INFO - DAG(s) dict_keys(['gx']) retrieved from /opt/airflow/dags/gx.py
+[2023-12-27T12:27:21.946+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:21.946+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-12-27T12:27:21.954+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:21.953+0000] {dag.py:3696} INFO - Setting next_dagrun for gx to None, run_after=None
+[2023-12-27T12:27:21.969+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/gx.py took 3.590 seconds
+[2023-12-27T12:27:52.205+0000] {processor.py:157} INFO - Started process (PID=85) to work on /opt/airflow/dags/gx.py
+[2023-12-27T12:27:52.206+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/gx.py for tasks to queue
+[2023-12-27T12:27:52.209+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:52.209+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/gx.py
+[2023-12-27T12:27:53.253+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:53.253+0000] {warnings.py:109} WARNING - /home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/options.py:103: UserWarning: You have an incompatible version of 'pyarrow' installed (11.0.0), please install a version that adheres to: 'pyarrow<10.1.0,>=10.0.1; extra == "pandas"'
+  warn_incompatible_dep(
+[2023-12-27T12:27:54.158+0000] {processor.py:839} INFO - DAG(s) dict_keys(['gx']) retrieved from /opt/airflow/dags/gx.py
+[2023-12-27T12:27:54.179+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:54.179+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-12-27T12:27:54.190+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:27:54.190+0000] {dag.py:3696} INFO - Setting next_dagrun for gx to None, run_after=None
+[2023-12-27T12:27:54.216+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/gx.py took 2.013 seconds
+[2023-12-27T12:28:24.894+0000] {processor.py:157} INFO - Started process (PID=102) to work on /opt/airflow/dags/gx.py
+[2023-12-27T12:28:24.895+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/gx.py for tasks to queue
+[2023-12-27T12:28:24.896+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:28:24.896+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/gx.py
+[2023-12-27T12:28:25.839+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:28:25.839+0000] {warnings.py:109} WARNING - /home/airflow/.local/lib/python3.8/site-packages/snowflake/connector/options.py:103: UserWarning: You have an incompatible version of 'pyarrow' installed (11.0.0), please install a version that adheres to: 'pyarrow<10.1.0,>=10.0.1; extra == "pandas"'
+  warn_incompatible_dep(
+[2023-12-27T12:28:26.641+0000] {processor.py:839} INFO - DAG(s) dict_keys(['gx']) retrieved from /opt/airflow/dags/gx.py
+[2023-12-27T12:28:26.660+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:28:26.660+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2023-12-27T12:28:26.670+0000] {logging_mixin.py:151} INFO - [2023-12-27T12:28:26.670+0000] {dag.py:3696} INFO - Setting next_dagrun for gx to None, run_after=None
+[2023-12-27T12:28:26.696+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/gx.py took 1.805 seconds

@@ -173,7 +173,7 @@ services:
       CONNECT_PLUGIN_PATH: '/usr/share/java,/etc/kafka-connect/jars'
 
     volumes:
-      - /home/hungnguyen/Caption-Project/flink/data_ingestion/kafka_connect/jars:/etc/kafka-connect/jars
+      - /home/hungnguyen/Caption-Project/stream_processing/data_ingestion/kafka_connect/jars:/etc/kafka-connect/jars
 
   # Confluent control center to manage Kafka
   control-center:

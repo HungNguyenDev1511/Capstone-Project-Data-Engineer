@@ -1,0 +1,185 @@
+[2023-12-20T15:25:13.848+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gx.gx_validate_pg manual__2023-12-20T15:25:06.627991+00:00 [queued]>
+[2023-12-20T15:25:13.858+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gx.gx_validate_pg manual__2023-12-20T15:25:06.627991+00:00 [queued]>
+[2023-12-20T15:25:13.858+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-12-20T15:25:13.867+0000] {taskinstance.py:1380} INFO - Executing <Task(GreatExpectationsOperator): gx_validate_pg> on 2023-12-20 15:25:06.627991+00:00
+[2023-12-20T15:25:13.873+0000] {standard_task_runner.py:57} INFO - Started process 2850 to run task
+[2023-12-20T15:25:13.875+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'gx', 'gx_validate_pg', 'manual__2023-12-20T15:25:06.627991+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/gx.py', '--cfg-path', '/tmp/tmpxrqybsio']
+[2023-12-20T15:25:13.876+0000] {standard_task_runner.py:85} INFO - Job 16: Subtask gx_validate_pg
+[2023-12-20T15:25:13.946+0000] {task_command.py:415} INFO - Running <TaskInstance: gx.gx_validate_pg manual__2023-12-20T15:25:06.627991+00:00 [running]> on host d2178d55ea0c
+[2023-12-20T15:25:14.230+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='gx' AIRFLOW_CTX_TASK_ID='gx_validate_pg' AIRFLOW_CTX_EXECUTION_DATE='2023-12-20T15:25:06.627991+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-20T15:25:06.627991+00:00'
+[2023-12-20T15:25:14.230+0000] {great_expectations.py:570} INFO - Running validation with Great Expectations...
+[2023-12-20T15:25:14.230+0000] {great_expectations.py:572} INFO - Instantiating Data Context...
+[2023-12-20T15:25:14.237+0000] {base.py:73} INFO - Using connection ID 'postgres_default' for task execution.
+[2023-12-20T15:25:14.265+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/base_data_context.py:158: DeprecationWarning: DataContext and BaseDataContext are deprecated as of v0.17.10 and will be removed in v0.20. Please use gx.get_context instead.
+  warnings.warn(
+
+[2023-12-20T15:25:14.281+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/serializable_data_context.py:225: UserWarning: Warning. An existing `great_expectations.yml` was found here: /opt/***/include/gx.
+    - No action was taken.
+  warnings.warn(message)
+
+[2023-12-20T15:25:14.281+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/great_expectations/data_context/data_context/serializable_data_context.py:235: UserWarning: Warning. An existing `config_variables.yml` was found here: /opt/***/include/gx/uncommitted.
+    - No action was taken.
+  warnings.warn(message)
+
+[2023-12-20T15:25:14.284+0000] {file_data_context.py:222} INFO - FileDataContext loading fluent config
+[2023-12-20T15:25:14.288+0000] {config.py:185} INFO - Loading 'datasources' ->
+[]
+[2023-12-20T15:25:14.334+0000] {great_expectations.py:585} INFO - Creating Checkpoint...
+[2023-12-20T15:25:14.337+0000] {great_expectations.py:604} INFO - Running Checkpoint...
+[2023-12-20T15:25:14.409+0000] {validator.py:1466} INFO - 	1 expectation(s) included in expectation_suite.
+[2023-12-20T15:25:14.430+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:   0%|          | 0/10 [00:00<?, ?it/s]
+[2023-12-20T15:25:14.430+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:   0%|          | 0/10 [00:00<?, ?it/s]
+[2023-12-20T15:25:14.454+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  20%|##        | 2/10 [00:00<00:00, 84.42it/s]
+[2023-12-20T15:25:14.456+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  20%|##        | 2/10 [00:00<00:00, 77.49it/s]
+[2023-12-20T15:25:14.478+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  40%|####      | 4/10 [00:00<00:00, 84.31it/s]
+[2023-12-20T15:25:14.480+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  40%|####      | 4/10 [00:00<00:00, 80.87it/s]
+[2023-12-20T15:25:14.481+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  50%|#####     | 5/10 [00:00<00:00, 99.63it/s]
+[2023-12-20T15:25:14.482+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  50%|#####     | 5/10 [00:00<00:00, 96.46it/s]
+[2023-12-20T15:25:14.487+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  90%|######### | 9/10 [00:00<00:00, 158.77it/s]
+[2023-12-20T15:25:14.489+0000] {logging_mixin.py:151} WARNING - Calculating Metrics:  90%|######### | 9/10 [00:00<00:00, 153.03it/s]
+[2023-12-20T15:25:14.492+0000] {logging_mixin.py:151} WARNING - Calculating Metrics: 100%|##########| 10/10 [00:00<00:00, 161.56it/s]
+[2023-12-20T15:25:14.493+0000] {logging_mixin.py:151} WARNING - Calculating Metrics: 100%|##########| 10/10 [00:00<00:00, 159.81it/s]
+[2023-12-20T15:25:14.493+0000] {logging_mixin.py:151} WARNING - Calculating Metrics: 100%|##########| 10/10 [00:00<00:00, 159.50it/s]
+[2023-12-20T15:25:14.493+0000] {logging_mixin.py:151} WARNING - Calculating Metrics: 100%|##########| 10/10 [00:00<00:00, 159.22it/s]
+[2023-12-20T15:25:14.935+0000] {great_expectations.py:618} INFO - GE Checkpoint Run Result:
+{
+  "run_id": {
+    "run_name": "gx_validate_pg_2023-12-20::15:25:14",
+    "run_time": "2023-12-20T15:25:14.340153+00:00"
+  },
+  "run_results": {
+    "ValidationResultIdentifier::taxi_suite/gx_validate_pg_2023-12-20::15:25:14/20231220T152514.340153Z/94eb38429358eb0bbb0d526146d3b48b": {
+      "validation_result": {
+        "success": true,
+        "results": [
+          {
+            "success": true,
+            "expectation_config": {
+              "expectation_type": "expect_column_values_to_not_be_null",
+              "kwargs": {
+                "column": "VendorID",
+                "batch_id": "94eb38429358eb0bbb0d526146d3b48b"
+              },
+              "meta": {},
+              "expectation_context": {
+                "description": null
+              }
+            },
+            "result": {
+              "element_count": 11598,
+              "unexpected_count": 0,
+              "unexpected_percent": 0.0,
+              "partial_unexpected_list": [],
+              "partial_unexpected_counts": []
+            },
+            "meta": {},
+            "exception_info": {
+              "raised_exception": false,
+              "exception_traceback": null,
+              "exception_message": null
+            }
+          }
+        ],
+        "evaluation_parameters": {},
+        "statistics": {
+          "evaluated_expectations": 1,
+          "successful_expectations": 1,
+          "unsuccessful_expectations": 0,
+          "success_percent": 100.0
+        },
+        "meta": {
+          "great_expectations_version": "0.18.5",
+          "expectation_suite_name": "taxi_suite",
+          "run_id": {
+            "run_name": "gx_validate_pg_2023-12-20::15:25:14",
+            "run_time": "2023-12-20T15:25:14.340153+00:00"
+          },
+          "batch_spec": {
+            "data_asset_name": "taxi_0",
+            "table_name": "taxi_0",
+            "batch_identifiers": [
+              "airflow_run_id"
+            ],
+            "module_name": "great_expectations.datasource.data_connector.asset",
+            "class_name": "Asset",
+            "schema_name": "public",
+            "sorters": {},
+            "type": null
+          },
+          "batch_markers": {
+            "ge_load_time": "20231220T152514.344544Z"
+          },
+          "active_batch_definition": {
+            "datasource_name": "postgres_default_configured_sql_datasource",
+            "data_connector_name": "default_configured_asset_sql_data_connector",
+            "data_asset_name": "taxi_0",
+            "batch_identifiers": {}
+          },
+          "validation_time": "20231220T152514.409599Z",
+          "checkpoint_name": "taxi_0.taxi_suite.chk",
+          "validation_id": null,
+          "checkpoint_id": null
+        }
+      },
+      "actions_results": {
+        "store_validation_result": {
+          "class": "StoreValidationResultAction"
+        },
+        "store_evaluation_params": {
+          "class": "StoreEvaluationParametersAction"
+        },
+        "update_data_docs": {
+          "local_site": "file:///opt/airflow/include/great_expectations/uncommitted/data_docs/local_site/validations/taxi_suite/gx_validate_pg_2023-12-20%3A%3A15%3A25%3A14/20231220T152514.340153Z/94eb38429358eb0bbb0d526146d3b48b.html",
+          "class": "UpdateDataDocsAction"
+        }
+      }
+    }
+  },
+  "checkpoint_config": {
+    "expectation_suite_ge_cloud_id": null,
+    "ge_cloud_id": null,
+    "notify_on": null,
+    "default_validation_id": null,
+    "template_name": null,
+    "batch_request": {},
+    "evaluation_parameters": {},
+    "slack_webhook": null,
+    "module_name": "great_expectations.checkpoint",
+    "config_version": 1.0,
+    "run_name_template": "gx_validate_pg_2023-12-20::15:25:14",
+    "name": "taxi_0.taxi_suite.chk",
+    "runtime_configuration": {},
+    "notify_with": null,
+    "site_names": null,
+    "validations": [],
+    "class_name": "Checkpoint",
+    "expectation_suite_name": "taxi_suite",
+    "action_list": [
+      {
+        "name": "store_validation_result",
+        "action": {
+          "class_name": "StoreValidationResultAction"
+        }
+      },
+      {
+        "name": "store_evaluation_params",
+        "action": {
+          "class_name": "StoreEvaluationParametersAction"
+        }
+      },
+      {
+        "name": "update_data_docs",
+        "action": {
+          "class_name": "UpdateDataDocsAction",
+          "site_names": []
+        }
+      }
+    ],
+    "profilers": []
+  },
+  "success": true
+}
+[2023-12-20T15:25:14.938+0000] {great_expectations.py:667} INFO - Validation with Great Expectations successful.
+[2023-12-20T15:25:15.070+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=gx, task_id=gx_validate_pg, execution_date=20231220T152506, start_date=20231220T152513, end_date=20231220T152515
+[2023-12-20T15:25:15.104+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-20T15:25:15.132+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

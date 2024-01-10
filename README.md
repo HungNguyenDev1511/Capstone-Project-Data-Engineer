@@ -16,7 +16,9 @@ python utils/generate_fake_data.py
 ```shell
 python utils/export_data_to_datalake.py
 ```
-the meaning of this step in here is - you can import the data - parquet file - to the MINIO bucket to manager.
+the meaning of this step in here is - you can import the data - parquet file - to the MINIO bucket to manager. you can also put the data to the MINIO by manual like this
+![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/c0c80f73-c8db-4e46-b320-6a42230b744f)
+
 **Note:** Don't forget to install dependencies from `requirements.txt` first (and we use `python 3.9`).
 
 ## Create data schema

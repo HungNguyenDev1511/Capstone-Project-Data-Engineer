@@ -74,9 +74,8 @@ The main idea to develop in this step is you should define the kafka-producer se
 - First you can start the docker compose file (You can skip this step when you run it success in step 1)
 - Then, you can access to https://localhost:9021 (9021 is the port of control center kafka)
 - Click on the topic tab - for example you can follow like image below![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/a8a0e543-2686-4a32-ac5b-d188ddcdf0e0)
-- If you can see the messege - for example like this - you develop kafka producer corectly ![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/06505930-b350-4943-973f-c365984bbad6)
-- Next you need to define the config where you want to get data from kafka and send to it, in our project i use postgre and define the config of postgre in here![Uploading image.png…]()
-- 
+- If you can see the messege - for example like this - you develop kafka producer corectly ![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/3cb3f636-1e0c-4880-8bdb-96111c49913a)
+- Next you need to define the config where you want to get data from kafka and send to it, in our project i use postgre and define the config of postgres
 
  
 

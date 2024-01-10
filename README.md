@@ -76,6 +76,6 @@ The main idea to develop in this step is you should define the kafka-producer se
 - Click on the topic tab - for example you can follow like image below![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/a8a0e543-2686-4a32-ac5b-d188ddcdf0e0)
 - If you can see the messege - for example like this - you develop kafka producer corectly ![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/3cb3f636-1e0c-4880-8bdb-96111c49913a)
 - Next you need to define the config where you want to get data from kafka and send to it, in our project i use postgre and define the config of postgres
-
- 
+That is all you need to define and use kafka in this step, one things i want to note in here is i split the data in two part. One i storage the offline data (base data) and one i use to storage the online data ( in real world that maybe created when the end user active with your system and in this project i use kafka to POC it). You can send the data from kafka to the base data directly and use some CDC tool like Debezium to capture the change of data and update it later if you want. Or in this project, i just split it in two part and you can do what ever you want to do the online data first and then copy or send it to base data.
+* STEP 3; USE AIRFLOW ORCHESTRATION TO SCHEDULER JOB ON YOUR SYSTEM
 

@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS lakehouse.taxi.taxi (
 Note: one thing your should notice in here is the string querry you use to create data should be match with the data you import in Minio. If you execute the create table fail and not match with the data you import on minio so DBeaver will response the error. And the last, the location you storage data - the parquet file - should be match with the location in the string query create table. if you follow the step carefully, you will see the data in the database and can use trino to query or use it
 ![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/fdaa5182-7336-4bf9-8c3f-dbe4e95a12b6)
 
-* STEP 2: USE THE KAFKA STREAMING TO CREATE MANY DATA.
+## STEP 2: USE THE KAFKA STREAMING TO CREATE MANY DATA.
 The main idea of this step is you use the streaming tool to create many data you want. There are some tool you can use in local for POC which are RabbitMQ, Kafka... and in this Project i used Kafka Flink and send data to PostgreSQL to use.
 The main idea to develop in this step is you should define the kafka-producer service and use it to send data continuously to PostgresSQL. In Kafka Producer, you can define the message format, the data you want to binding the message and the topic you want to share the message. You can reference this guide to develop: [https://docs.confluent.io/cloud/current/connectors/cc-postgresql-sink.html#step-6-check-the-results-in-postgresql](https://github.com/apache/flink/blob/master/flink-python/pyflink/examples)
 - First you can start the docker compose file (You can skip this step when you run it success in step 1)
@@ -91,6 +91,14 @@ As you can see in this example, i define 3 task and using PostgreOperator to wor
 ![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/b62afa60-adc7-4289-a8fa-d1da19d2786c)
 That is all the example i want to give for you and you can follow this guide https://docs.astronomer.io/learn/airflow-great-expectations
 Back to our project, i just use GreatExpectationsOperator in airflow to validate all data i send from Kafka to Postgre so i just define one job in schedule_job/dags/gx.py
+Notice that, when we combine PostgreOperator with Airflow, you might be meet one error about connection with Postgre, so we need to config the Airflow with Postgre by access the Connections in the tab Admins like image below
+![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/f19bef5c-e58a-4fbb-94db-9b9ff6395143)
+and add the config to connect to Postgre like image below
+![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/37e35b6a-c3c6-4fc8-814d-82411b0018da)
+in there, Host 172.17.0.1 is the Docker Host IP, Port 5433 is the port of Postgress
+
+
+ 
 
 
 

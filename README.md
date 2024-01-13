@@ -6,7 +6,8 @@ Need Ubuntu 20.04 or higher and install Docker in your computer. For detail, you
 
 ## Architecture of pipeline 
 
-![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/96e51d85-a891-4e62-a9ee-38ce3fc12b37)
+![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/16e6fc9a-3ae9-4217-be10-34a5344e50bd)
+
 
 
 # How-to Guide
@@ -87,16 +88,16 @@ The main idea to develop in this step is you should define the kafka-producer se
 - Next you need to define the config where you want to get data from kafka and send to it, in our project i use postgre and define the config of postgres
 That is all you need to define and use kafka in this step, one things i want to note in here is i split the data in two part. One i storage the offline data (base data) and one i use to storage the online data ( in real world that maybe created when the end user active with your system and in this project i use kafka to POC it). You can send the data from kafka to the base data directly and use some CDC tool like Debezium to capture the change of data and update it later if you want. Or in this project, i just split it in two part and you can do what ever you want to do the online data first and then copy or send it to base data.
 - The last thing i want to note you in here is, you can create multiple kafka-producer service to send many message or try to deploy the Docker Swarm mode (you can follow this guide https://docs.docker.com/engine/swarm/stack-deploy/) to run many node kafka-producer
-* STEP 3; USE AIRFLOW ORCHESTRATION TO SCHEDULER JOB ON YOUR SYSTEM
+## STEP 3; USE AIRFLOW ORCHESTRATION TO SCHEDULER JOB ON YOUR SYSTEM
 Apache Airflow™ is an open-source platform for developing, scheduling, and monitoring batch-oriented workflows. Airflow’s extensible Python framework enables you to build workflows connecting with virtually any technology. A web interface helps manage the state of your workflows. Airflow is deployable in many ways, varying from a single process on your laptop to a distributed setup to support even the biggest workflows.
 Airflow have many Operator and you can choose one of them to do what you want to do. It have PostgresOperator and you can use it to create the job when working with Postgre database. It have DockerOperator and you can create a job build app by Docker. In this project, i use GreatExpectationsOperator to create a job validation data in PostgreSQL.
-## Start our airflow infrastructure
+# Start our airflow infrastructure
 - First, you need to run all service that is need for Airflow service by using airflow. Open the terminal Change directory to schedule-job folder in repository (cd schedule_job) and run the airflow service by command docker-compose -f airflow-docker-compose.yaml.
 - Second, when all service success and healthy, open your browser and access to http://locahost:8080. If lucky you can see the airflow-webserver service like that ![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/d2c425cd-e0c5-4f69-9c0e-d551f5a04a5e). And you can handler all error when develop by see the log - for example - ![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/2d79051c-85bf-4a85-9125-472d63adddd8)
 - Now the question is, how can we define all the job or task in airflow. I will give you one simple example in here you can see in this image below![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/b7d51bdf-ca6d-451b-b4de-634c64f7d2b1)
 As you can see in this example, i define 3 task and using PostgreOperator to work with Postgre database. i create job create table and then i create the job validate data and finally when data validation task execute success i drop the table i created in first job. One thing you need to note in the validation job is, when you working GreatExpectationsOperator in airflow, you need to define one config json file of great expectation to validate data - for example - like this
 ![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/b62afa60-adc7-4289-a8fa-d1da19d2786c)
-That is all the example i want to give for you and you can follow this guide https://docs.astronomer.io/learn/airflow-great-expectations
+- That is all the example i want to give for you and you can follow this guide https://docs.astronomer.io/learn/airflow-great-expectations
 Back to our project, i just use GreatExpectationsOperator in airflow to validate all data i send from Kafka to Postgre so i just define one job in schedule_job/dags/gx.py
 Notice that, when we combine PostgreOperator with Airflow, you might be meet one error about connection with Postgre, so we need to config the Airflow with Postgre by access the Connections in the tab Admins like image below
 ![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/f19bef5c-e58a-4fbb-94db-9b9ff6395143)

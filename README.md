@@ -6,7 +6,7 @@ Need Ubuntu 20.04 or higher and install Docker in your computer. For detail, you
 
 ## Architecture of pipeline 
 
-![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/4f00e421-7246-4104-abf0-3262de4f6288)
+![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/96e51d85-a891-4e62-a9ee-38ce3fc12b37)
 
 
 # How-to Guide

@@ -1,6 +1,13 @@
-Start: the data i work in this project is NYC taxi data. About dataset, Yellow and green taxi trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts. The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC) by technology providers authorized under the Taxicab & Livery Passenger Enhancement Programs (TPEP/LPEP). You can dowload and use this dataset in here: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page. The format data i use in this Project is Parquet file but you can work with CSV if you want. 
+## Start: 
+The data i work in this project is NYC taxi data. About dataset, Yellow and green taxi trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts. The data used in the attached datasets were collected and provided to the NYC Taxi and Limousine Commission (TLC) by technology providers authorized under the Taxicab & Livery Passenger Enhancement Programs (TPEP/LPEP). You can dowload and use this dataset in here: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page. The format data i use in this Project is Parquet file but you can work with CSV if you want. 
 
-Prerequisite: Need Ubuntu 20.04 or higher and install Docker in your computer. For detail, you can follow the guide in here: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04 and after you install success, just check again to make sure Docker can working well in your local computer by command: docker ps -a.
+## Prerequisite: 
+Need Ubuntu 20.04 or higher and install Docker in your computer. For detail, you can follow the guide in here: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04 and after you install success, just check again to make sure Docker can working well in your local computer by command: docker ps -a.
+
+## Architecture of pipeline 
+
+![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/1305c318-afbd-416e-b70b-1d644568cd47)
+
 
 # How-to Guide
 

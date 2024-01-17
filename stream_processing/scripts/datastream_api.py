@@ -87,7 +87,7 @@ def main():
     )
 
     # Avro will need it for validation from the schema registry
-    # schema_path = "./data_ingestion/kafka_producer/avro_schemas/schema_0.avsc"
+    # schema_path = "./data_ingestion/kafka_producer/avro_schemas/taxi_schema.avsc"
     # with open(schema_path) as f:
     #     schema = f.read()
 

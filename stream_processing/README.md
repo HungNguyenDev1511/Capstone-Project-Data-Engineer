@@ -13,7 +13,7 @@ then, you can check if Kafka producer is running normally by using
 docker logs kafka_producer
 ```
 
-Take the schema from these logs, to update the schema in the path `data_ingestion/kafka_producer/avro_schemas/schema_0.avsc`. 
+Take the schema from these logs, to update the schema in the path `data_ingestion/kafka_producer/avro_schemas/taxi_schema..avsc`. 
 
 This schema will be used to our Flink consumer.
 

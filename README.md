@@ -77,10 +77,10 @@ CREATE TABLE IF NOT EXISTS lakehouse.taxi.taxi (
 2. Connect to our database (type `trino`) using the following information (empty `password`):
   ![DBeaver Trino](./imgs/trino.png)
 
-Note: one thing your should notice in here is the string querry you use to create data should be match with the data you import in Minio. If you execute the create table fail and not match with the data you import on minio so DBeaver will response the error. And the last, the location you storage data - the parquet file - should be match with the location in the string query create table. if you follow the step carefully, you will see the data in the database and can use trino to query or use it
+- Note: one thing your should notice in here is the string querry you use to create data should be match with the data you import in Minio. If you execute the create table fail and not match with the data you import on minio so DBeaver will response the error. And the last, the location you storage data - the parquet file - should be match with the location in the string query create table. if you follow the step carefully, you will see the data in the database and can use trino to query or use it
 ![image](https://github.com/HungNguyenDev1511/Caption-Project/assets/69066161/fdaa5182-7336-4bf9-8c3f-dbe4e95a12b6)
 
-<!--- Trick: To debug in this step, you dont need to write the query with multiple column and the large data parquet file, just try with small table with few column and small size parquet file first. And if this step wrong, you can try to check the configure of component - MINIO, Detal lake, Postgress. If you can import data and query the data by DBeaver, so all configure is write and you just only need to check the structure of parquet file and data import -->
+- Trick: To debug in this step, you dont need to write the query with multiple column and the large data parquet file, just try with small table with few column and small size parquet file first. And if this step wrong, you can try to check the configure of component - MINIO, Detal lake, Postgress. If you can import data and query the data by DBeaver, so all configure is write and you just only need to check the structure of parquet file and data import
 
 
 ## STEP 2: USE THE KAFKA STREAMING TO CREATE MANY DATA.

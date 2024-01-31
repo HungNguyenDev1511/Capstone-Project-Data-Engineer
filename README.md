@@ -113,6 +113,8 @@ and add the config to connect to Postgre like image below
 ![image](https://github.com/HungNguyenDev1511/Capstone-Project-Data-Engineer/assets/69066161/37e35b6a-c3c6-4fc8-814d-82411b0018da)
 in there, Host 172.17.0.1 is the Docker Host IP, Port 5433 is the port of Postgress
 
+## Conclusion: So that is all pipeline project i build for Data Processing, further, you can apply and deploy this pipeline to many Orchestration OpenSource like K8s. Some Opensource for this you can refer like Minio Operator - you can deploy MINIO quick on K8s and Strimzi - you can deploy Kafka on K8s quick. I think that implementing a project like this is still quite simple and primitive, so we need input from the community as well as those who are interested and working in the MLOPS field. Finnaly, thanks for my mentor Quan Dang, who support and guide me to do this project in long time. You can connect with him via https://www.linkedin.com/in/quan-dang/. 
+
 
  
 

@@ -18,9 +18,8 @@ Need Ubuntu 20.04 or higher and install Docker in your computer. For detail, you
 docker compose -f docker-compose.yml -d
 ```
 
-## Generate data and push them to MinIO
-```
-### 1. Push data to MinIO
+## Push data to MinIO
+1. Push data to MinIO
 
 The meaning of this step in here is - you can import the data - parquet file - to the MINIO bucket to manager. you can also put the data to the MINIO by manual like this. Open browser like Firefox or Chrome and access to the https://locahost:9001 (9001 is the port which run the MINIO service you define in docker-compose file) 
 and then use username: minio_access_key  password: minio_secret_key to access MINIO service

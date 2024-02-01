@@ -28,7 +28,7 @@ and then use username: minio_access_key  password: minio_secret_key to access MI
 **Note:** Don't forget to install dependencies from `requirements.txt` first (and we use `python 3.9`).
 
 ## Create data schema
-After putting your files to `MinIO``, please execute `trino` container by the following command:
+After putting your files to MINIO, please execute trino container by the following command:
 ```shell
 docker exec -ti datalake-trino bash
 ```

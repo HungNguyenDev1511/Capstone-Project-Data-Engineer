@@ -19,11 +19,8 @@ docker compose -f docker-compose.yml -d
 ```
 
 ## Generate data and push them to MinIO
-### 1. Generate data
-```shell
-python utils/generate_fake_data.py
 ```
-### 2. Push data to MinIO
+### 1. Push data to MinIO
 ```shell
 python utils/export_data_to_datalake.py
 ```
@@ -33,7 +30,7 @@ and then use username: minio_access_key  password: minio_secret_key to access MI
 
 **Note:** Don't forget to install dependencies from `requirements.txt` first (and we use `python 3.9`).
 
-## Create data schema
+### 2.Create data schema
 After putting your files to `MinIO``, please execute `trino` container by the following command:
 ```shell
 docker exec -ti datalake-trino bash

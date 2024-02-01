@@ -6,7 +6,7 @@ import datetime
 
 # Load Delta Lake table
 print("*"*80)
-dt = DeltaTable("data/pump/part_0")
+dt = DeltaTable("data/taxi-data/")
 print("Current Delta table:")
 print(dt.to_pandas())
 df = pd.DataFrame({
@@ -27,5 +27,5 @@ print(df)
 # Take a look at this for more details: https://delta.io/blog/2022-10-15-version-pandas-dataset/
 write_deltalake(dt, df, mode="append")
 print("Final Delta table:")
-dt2 = DeltaTable("data/pump/part_0")
+dt2 = DeltaTable("data/taxi-data/")
 print(dt2.to_pandas())

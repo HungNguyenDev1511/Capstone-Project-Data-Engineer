@@ -4,7 +4,7 @@ from deltalake import DeltaTable
 
 # Load Delta Lake table
 print("*"*80)
-dt = DeltaTable("data/pump/part_0")
+dt = DeltaTable("data/taxi-data/")
 # Uncomment the below line to switch to another version
 # dt.load_version(3)
 print("[INFO] Loaded Delta Lake table successfully!")
